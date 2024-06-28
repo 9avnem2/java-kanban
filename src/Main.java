@@ -8,21 +8,23 @@ public class Main {
 
     public static void main(String[] args) {
         TaskManager taskManager = new TaskManager();
-        Task task = new Task("Первая задача", "Встать");
-        Task task2 = new Task("Вторая задача", "Умыться");
+        Task task = new Task("Первая задача", "Описание первой задачи");
+        Task task2 = new Task("Вторая задача", "Описание второй задачи");
         taskManager.createTask(task);
         taskManager.createTask(task2);
 
-        Epic epic = new Epic("Pervii", "Pereezd");
+        Epic epic = new Epic("Первый эпик", "Переезд");
         taskManager.createEpic(epic);
-        taskManager.createSubTask(new SubTask("Pervii", "Sobrat vehsi", epic.getId()));
-        taskManager.createSubTask(new SubTask("Pervii", "Sobrat ne veshi", epic.getId()));
+        taskManager.createSubTask(new SubTask("Первый", "Собрать вещи", epic.getId()));
+        taskManager.createSubTask(new SubTask("Первый", "Собрать не вещи", epic.getId()));
 
-        Epic epic2 = new Epic("Vtorii", "Prava");
+
+        Epic epic2 = new Epic("Второй эпик", "Права");
         taskManager.createEpic(epic2);
-        taskManager.createSubTask(new SubTask("Vtorii", "Avtoshkola", epic2.getId()));
+        taskManager.createSubTask(new SubTask("Второй", "Автошкола", epic2.getId()));
 
         taskManager.printEmAll();
+
         System.out.println("меняем состояние");
         task.setTaskStatus(TaskStatus.IN_PROGRESS);
         taskManager.updateTask(task);
@@ -38,7 +40,7 @@ public class Main {
         subTask1.setTaskStatus(TaskStatus.DONE);
         taskManager.updateSubTask(subTask1);
         System.out.println();
-        System.out.println(taskManager.getSubTasksByEpic(epic));
+        System.out.println(taskManager.getSubTasksByEpic(epic.getId()));
         taskManager.printEmAll();
         subTask.setTaskStatus(TaskStatus.DONE);
         taskManager.updateSubTask(subTask);

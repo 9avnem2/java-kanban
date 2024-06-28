@@ -5,13 +5,12 @@ import manager.TaskManager;
 import java.util.Objects;
 
 public class Task {
-    protected final int id;
+    protected int id;
     protected String title;
     protected String description;
     protected TaskStatus taskStatus = TaskStatus.NEW;
 
     public Task(String title, String description) {
-        this.id = TaskManager.getCount();
         this.title = title;
         this.description = description;
     }
@@ -30,6 +29,10 @@ public class Task {
 
     public TaskStatus getTaskStatus() {
         return taskStatus;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
